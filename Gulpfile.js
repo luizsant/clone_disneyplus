@@ -7,10 +7,10 @@ const imagemin = require('gulp-imagemin');
 const browserSync = require('browser-sync').create();
 
 function comprimeJavaScript() {
-    return gulp.src('js/*.js')
+    return gulp.src('source/**/*.js')
         .pipe(uglify())
         .pipe(obfuscate())
-        .pipe(gulp.dest('source/scripts'))
+        .pipe(gulp.dest('build/'))
         .pipe(browserSync.stream());
 }
 
@@ -44,7 +44,7 @@ exports.default = function() {
     browser();
     
     gulp.watch('source/**/*.scss', { ignoreInitial: false}, gulp.parallel(compilaSass));
-    gulp.watch('js/*.js', { ignoreInitial: false}, gulp.series(comprimeJavaScript));
+    gulp.watch('source/**/*.js', { ignoreInitial: false}, gulp.series(comprimeJavaScript));
     gulp.watch('source/images/**/*', { ignoreInitial: false}, gulp.series(comprimeImagens));
     gulp.watch("*.html").on('change', browserSync.reload);
 }
