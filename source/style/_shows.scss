@@ -31,8 +31,7 @@
         justify-content: center;
 
         @media (max-width: 768px) {
-            white-space: nowrap;
-            overflow-x: scroll;
+            white-space: nowrap;            
             padding-left: 20px;
         }
 
